@@ -17,16 +17,19 @@ body {
 
 header {
     background-color: #2C2C2C;
-    color: #C242FF;
-    display: flex;
-    padding-right: 250px;
-    justify-content: space-between; /* Alterado */
-    align-items: center;
+    color: #FFFFFD;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 15px 200px;
+    padding: 15px 100px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .logo-container {
@@ -36,6 +39,10 @@ header {
 
 header a {
     text-decoration: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #FFFFFD;
+    transition: color 0.3s ease-in-out;
 }
 
 header a h1 {
@@ -45,8 +52,14 @@ header a h1 {
     color: #C242FF !important;
 }
 
-header a:hover h1 {
-    color: #C242FF !important;
+
+header a:hover {
+    color: #C242FF ;
+    
+}
+header a:hover .cta-header{
+    color: #FFFFFD;
+
 }
 
 /* Botão do menu (hambúrguer) */
@@ -67,18 +80,20 @@ header a:hover h1 {
 nav.menu {
     display: flex;
     align-items: center;
+    gap: 40px;
 }
 
 nav.menu a {
-    font-family: 'Montserrat', sans-serif;
     color: #FFFFFD;
-    margin: 0 15px;
     text-decoration: none;
     font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
     transition: color 0.3s ease-in-out;
+    white-space: nowrap;
+    margin: 0 10px; /* Adicionei espaçamento horizontal */
 }
 
-nav.menu a:hover {
+nav.menu a:not(.cta-header):hover {
     color: #C242FF;
 }
 
@@ -430,8 +445,8 @@ body.sobre main section:nth-child(3) ul li {
 }
 
 body.sobre main section:nth-child(3) ul li a {
-    color: #FFFFFD; /* Cor branca para os links */
-    text-decoration: underline; /* Mantém a linha embaixo dos links */
+    color: #FFFFFD;
+    text-decoration: underline;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -439,7 +454,7 @@ body.sobre main section:nth-child(3) ul li a {
 }
 
 body.sobre main section:nth-child(3) ul li a:hover {
-    color: #C242FF; /* Cor roxa no hover */
+    color: #C242FF;
 }
 
 body.sobre main section:nth-child(3) ul li a i {
@@ -471,35 +486,35 @@ footer a {
 /* Media Queries para Responsividade (Ajustado) */
 @media (max-width: 768px) {
     header {
-        padding-left: 20px; /* Reduz o padding do cabeçalho */
+        padding-left: 20px;
         padding-right: 20px;
-        display: flex; /* Garante Flexbox */
-        justify-content: space-between; /* Espaço entre logo e menu */
+        display: flex;
+        justify-content: space-between;
     }
 
     header h1 {
-        font-size: 1.5rem; /* Ajusta tamanho da logo */
-        white-space: nowrap; /* Impede quebra da logo */
+        font-size: 1.5rem;
+        white-space: nowrap;
     }
 
     nav {
-        display: none; /* Esconde o menu padrão */
-        position: fixed; /* Menu fixo na tela */
+        display: none;
+        position: fixed;
         top: 0;
         right: 0;
-        bottom: 0; /* Expande até a parte inferior */
-        width: 250px; /* Largura do menu */
-        background-color: #2C2C2C; /* Fundo do menu */
+        bottom: 0;
+        width: 250px;
+        background-color: #2C2C2C;
         z-index: 1000;
-        padding-top: 60px; /* Espaço para não sobrepor o cabeçalho */
+        padding-top: 60px;
         box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease-in-out; /* Animação suave */
-        transform: translateX(100%); /* Inicia fora da tela */
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%);
     }
 
     nav.active {
         display: block;
-        transform: translateX(0); /* Mostra o menu */
+        transform: translateX(0);
     }
 
     nav a {
@@ -507,7 +522,7 @@ footer a {
         padding: 10px 20px;
         color: #FFFFFD;
         text-decoration: none;
-        border-bottom: 1px solid #444; /* Separador entre itens */
+        border-bottom: 1px solid #444;
     }
 
     nav a:last-child {

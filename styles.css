@@ -565,7 +565,4 @@ footer a {
         grid-template-columns: 1fr; /* 1 coluna */
     }
 
-    .portfolio-item img {
-        display: none; /* Oculta as imagens do portfólio */
-    }
 }

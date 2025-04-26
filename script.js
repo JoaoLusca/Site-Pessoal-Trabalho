@@ -2,8 +2,8 @@ const progressBar = document.getElementById('progress-bar');
 const preloader = document.getElementById('preloader');
 const content = document.getElementById('content');
 const hasVisitedSession = sessionStorage.getItem('hasVisitedSession');
-const header = document.querySelector('header'); // Seleciona o header
-const nav = document.querySelector('nav'); // Seleciona a nav
+const header = document.querySelector('header');
+const nav = document.querySelector('nav');
 
 function init() {
     content.style.display = 'block';
@@ -128,7 +128,7 @@ function initBackgroundAnimation() {
     });
 }
 
-// Evento de clique para o menu hambúrguer
+// Menu Hambúrguer
 header.addEventListener('click', () => {
     nav.classList.toggle('active');
 });

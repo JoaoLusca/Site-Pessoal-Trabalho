@@ -468,49 +468,61 @@ footer a {
     transition: color 0.3s ease-in-out;
 }
 
-/* Media Queries para Responsividade */
+/* Media Queries para Responsividade (Ajustado) */
 @media (max-width: 768px) {
     header {
-        justify-content: left; /* Centraliza a logo */
-        position: relative; /* Necessário para posicionar o menu */
+        padding-left: 20px; /* Reduz o padding do cabeçalho */
+        padding-right: 20px;
+        display: flex; /* Garante Flexbox */
+        justify-content: space-between; /* Espaço entre logo e menu */
     }
 
     header h1 {
-        font-size: 2rem; /* Reduzi o tamanho da logo em telas menores */
+        font-size: 1.5rem; /* Ajusta tamanho da logo */
+        white-space: nowrap; /* Impede quebra da logo */
     }
 
     nav {
-        display: none; /* Esconde a navegação padrão */
-        position: absolute;
-        top: 100%; /* Posiciona abaixo do cabeçalho */
+        display: none; /* Esconde o menu padrão */
+        position: fixed; /* Menu fixo na tela */
+        top: 0;
         right: 0;
-        background-color: #2C2C2C;
-        width: 200px;
-        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+        bottom: 0; /* Expande até a parte inferior */
+        width: 250px; /* Largura do menu */
+        background-color: #2C2C2C; /* Fundo do menu */
         z-index: 1000;
-        padding: 20px; /* Adicionei padding ao menu */
+        padding-top: 60px; /* Espaço para não sobrepor o cabeçalho */
+        box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out; /* Animação suave */
+        transform: translateX(100%); /* Inicia fora da tela */
     }
 
     nav.active {
-        display: block; /* Mostra a navegação quando a classe 'active' é adicionada */
+        display: block;
+        transform: translateX(0); /* Mostra o menu */
     }
 
     nav a {
-        display: block; /* Links em bloco para ocupar a largura */
-        padding: 10px 0; /* Espaçamento nos links */
-        margin: 0; /* Remove margens dos links */
-        text-align: right; /* Alinha o texto à direita */
+        display: block;
+        padding: 10px 20px;
+        color: #FFFFFD;
+        text-decoration: none;
+        border-bottom: 1px solid #444; /* Separador entre itens */
+    }
+
+    nav a:last-child {
+        border-bottom: none; /* Remove separador do último item */
     }
 
     .cta-header {
-        margin-left: 0; /* Remove a margem do botão em telas pequenas */
+        margin-left: 0;
     }
 
-    /* Estilos para o menu hambúrguer */
-    header::after { /* Usei ::after para criar o hambúrguer */
-        content: '\2261'; /* Código do ícone de três linhas */
+    /* Menu Hambúrguer */
+    header::after {
+        content: '\2261'; /* Ícone */
         font-size: 2rem;
-        color: #C242FF;
+        color: #C242FF; /* Cor do ícone */
         position: absolute;
         top: 50%;
         right: 20px;
@@ -518,19 +530,27 @@ footer a {
         cursor: pointer;
     }
 
-    /* Ajustes para a seção bem-vindo */
-    .bem-vindo-section {
+    /* Ocultar Seções com Imagens */
+    .bem-vindo-imagem,
+    .sobre-mim-imagem {
+        display: none;
+    }
+
+    .bem-vindo-section,
+    .sobre-mim-container {
         flex-direction: column; /* Empilha os elementos */
-        text-align: justify; /* Centraliza o texto */
+        text-align: center; /* Centraliza o texto */
     }
 
     .bem-vindo-texto {
-        padding-right: 0; /* Remove o padding */
-        margin-bottom: 20px; /* Espaço entre texto e imagem */
+        padding-right: 0;
     }
 
-    .bem-vindo-imagem {
-        width: 80%; /* Ajusta a largura da imagem */
-        margin: 0 auto; /* Centraliza a imagem */
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 1 coluna */
+    }
+
+    .portfolio-item img {
+        display: none; /* Oculta as imagens do portfólio */
     }
 }

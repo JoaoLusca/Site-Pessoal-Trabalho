@@ -2,19 +2,12 @@ const progressBar = document.getElementById('progress-bar');
 const preloader = document.getElementById('preloader');
 const content = document.getElementById('content');
 const hasVisitedSession = sessionStorage.getItem('hasVisitedSession');
-
-// MENU HAMBURGUER
-const menuToggle = document.querySelector('.menu-toggle');
-const navContainer = document.querySelector('.nav-container');
-
-menuToggle.addEventListener('click', () => {
-    navContainer.classList.toggle('active');
-});
-// FIM MENU HAMBURGUER
+const header = document.querySelector('header'); // Seleciona o header
+const nav = document.querySelector('nav'); // Seleciona a nav
 
 function init() {
     content.style.display = 'block';
-    initBackgroundAnimation(); // Chamando a animação de fundo aqui
+    initBackgroundAnimation();
     document.body.style.overflow = 'auto';
 }
 
@@ -27,12 +20,12 @@ if (!hasVisitedSession) {
 
         if (progress >= 100) {
             setTimeout(() => {
-                preloader.style.opacity = '0'; // Inicia a transição de desaparecimento
+                preloader.style.opacity = '0';
                 setTimeout(() => {
-                    preloader.style.display = 'none'; // Remove do fluxo após a transição
-                    init(); // Chama a função init para exibir o conteúdo e iniciar a animação
+                    preloader.style.display = 'none';
+                    init();
                     sessionStorage.setItem('hasVisitedSession', 'true');
-                }, 500); // Espera o tempo da transição (0.5s)
+                }, 500);
             }, 500);
         } else {
             setTimeout(updateProgress, 100);
@@ -42,7 +35,7 @@ if (!hasVisitedSession) {
     window.onload = updateProgress;
 } else {
     preloader.style.display = 'none';
-    init(); // Chama a função init para exibir o conteúdo e iniciar a animação
+    init();
 }
 
 function initBackgroundAnimation() {
@@ -52,14 +45,14 @@ function initBackgroundAnimation() {
     canvas.style.left = '0';
     canvas.style.zIndex = '-1';
     document.body.appendChild(canvas);
-    document.body.style.backgroundColor = 'black'; // Define o fundo preto
+    document.body.style.backgroundColor = 'black';
 
     const ctx = canvas.getContext('2d');
     let width = window.innerWidth;
     let height = window.innerHeight;
     const points = [];
-    const numPoints = 50; // Ajuste a quantidade de pontos
-    const connectDistance = 120; // Distância para conectar os pontos
+    const numPoints = 50;
+    const connectDistance = 120;
 
     canvas.width = width;
     canvas.height = height;
@@ -68,15 +61,15 @@ function initBackgroundAnimation() {
         constructor() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 0.8; // Velocidade horizontal
-            this.vy = (Math.random() - 0.5) * 0.8; // Velocidade vertical
+            this.vx = (Math.random() - 0.5) * 0.8;
+            this.vy = (Math.random() - 0.5) * 0.8;
             this.radius = 2;
         }
 
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(207, 115, 254, 0.8)'; // Cor #CF73FE para os pontos
+            ctx.fillStyle = 'rgba(207, 115, 254, 0.8)';
             ctx.fill();
         }
 
@@ -84,7 +77,6 @@ function initBackgroundAnimation() {
             this.x += this.vx;
             this.y += this.vy;
 
-            // Reaparecer do lado oposto quando sair da tela
             if (this.x < 0 || this.x > width) this.vx *= -1;
             if (this.y < 0 || this.y > height) this.vy *= -1;
 
@@ -107,7 +99,7 @@ function initBackgroundAnimation() {
                     ctx.beginPath();
                     ctx.moveTo(points[i].x, points[i].y);
                     ctx.lineTo(points[j].x, points[j].y);
-                    ctx.strokeStyle = 'rgba(207, 115, 254, 0.3)'; // Cor #CF73FE para as linhas
+                    ctx.strokeStyle = 'rgba(207, 115, 254, 0.3)';
                     ctx.lineWidth = 1;
                     ctx.stroke();
                 }
@@ -129,5 +121,14 @@ function initBackgroundAnimation() {
         height = window.innerHeight;
         canvas.width = width;
         canvas.height = height;
+        points.forEach(point => {
+            point.x = point.x * (width / canvas.width);
+            point.y = point.y * (height / canvas.height);
+        });
     });
 }
+
+// Evento de clique para o menu hambúrguer
+header.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});

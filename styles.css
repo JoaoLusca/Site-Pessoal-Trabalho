@@ -475,45 +475,62 @@ footer a {
         position: relative; /* Necessário para posicionar o menu */
     }
 
-    .logo-container {
-        width: 100%;
-        text-align: center;
+    header h1 {
+        font-size: 2rem; /* Reduzi o tamanho da logo em telas menores */
     }
 
-    .menu-toggle {
-        display: block;
+    nav {
+        display: none; /* Esconde a navegação padrão */
         position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-
-    .nav-container {
-        display: none; /* Esconde o menu */
-        position: absolute;
-        top: 100%; /* Abaixo do cabeçalho */
+        top: 100%; /* Posiciona abaixo do cabeçalho */
         right: 0;
         background-color: #2C2C2C;
-        width: 200px; /* Largura do menu expandido */
+        width: 200px;
         box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 1000;
+        padding: 20px; /* Adicionei padding ao menu */
     }
 
-    .nav-container.active {
-        display: block; /* Mostra o menu quando ativo */
+    nav.active {
+        display: block; /* Mostra a navegação quando a classe 'active' é adicionada */
     }
 
-    .nav-container nav.menu {
-        display: block; /* Garante que os itens do menu se empilhem */
+    nav a {
+        display: block; /* Links em bloco para ocupar a largura */
+        padding: 10px 0; /* Espaçamento nos links */
+        margin: 0; /* Remove margens dos links */
+        text-align: right; /* Alinha o texto à direita */
     }
 
-    .nav-container nav.menu a {
-        display: block;
-        padding: 10px;
-        text-align: right;
+    .cta-header {
+        margin-left: 0; /* Remove a margem do botão em telas pequenas */
     }
 
-    /* Esconde as imagens */
-    .imagem-responsiva {
-        display: none;
+    /* Estilos para o menu hambúrguer */
+    header::after { /* Usei ::after para criar o hambúrguer */
+        content: '\2261'; /* Código do ícone de três linhas */
+        font-size: 2rem;
+        color: #C242FF;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    /* Ajustes para a seção bem-vindo */
+    .bem-vindo-section {
+        flex-direction: column; /* Empilha os elementos */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .bem-vindo-texto {
+        padding-right: 0; /* Remove o padding */
+        margin-bottom: 20px; /* Espaço entre texto e imagem */
+    }
+
+    .bem-vindo-imagem {
+        width: 80%; /* Ajusta a largura da imagem */
+        margin: 0 auto; /* Centraliza a imagem */
     }
 }

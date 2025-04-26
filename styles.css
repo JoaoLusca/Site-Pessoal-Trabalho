@@ -471,7 +471,7 @@ footer a {
 /* Media Queries para Responsividade */
 @media (max-width: 768px) {
     header {
-        justify-content: center; /* Centraliza a logo */
+        justify-content: left; /* Centraliza a logo */
         position: relative; /* Necessário para posicionar o menu */
     }
 
@@ -521,7 +521,7 @@ footer a {
     /* Ajustes para a seção bem-vindo */
     .bem-vindo-section {
         flex-direction: column; /* Empilha os elementos */
-        text-align: center; /* Centraliza o texto */
+        text-align: justify; /* Centraliza o texto */
     }
 
     .bem-vindo-texto {

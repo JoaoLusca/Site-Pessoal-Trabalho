@@ -381,8 +381,7 @@ footer {
 
 .sobre-mim-imagem {
     width: 400px;
-    height: 300px;
-    border-radius: 0px;
+    height: 400px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -392,6 +391,7 @@ footer {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 50%;
 }
 
 /* Estilos para as listas nas seções da página "Sobre" */
